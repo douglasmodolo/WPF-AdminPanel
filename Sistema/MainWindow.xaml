@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc="clr-namespace:Sistema.User_Controls"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d" Height="740" Width="1280" WindowStartupLocation="CenterScreen" 
         WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Grid>
@@ -160,7 +161,84 @@
 
                     <!--Chart Section-->
                     <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
-                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+                                <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                                <TextBlock Text="Profit" Style="{StaticResource titleText}"/>
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25" Grid.Row="1">
+                                <TextBlock Text="70000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="60000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="50000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="40000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="30000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="20000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="10000" Foreground="#717EB2" Margin="0 0 0 25"/>
+                                <TextBlock Text="0" Foreground="#717EB2" HorizontalAlignment="Right"/>
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="50 0 0 25" Grid.Row="1">
+                                <TextBlock Text="1" Foreground="#717EB2"/>
+                                <TextBlock Text="2" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="3" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="4" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="5" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="6" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="7" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="8" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="9" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="10" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="11" Foreground="#717EB2" Margin="41 0 0 0"/>
+                                <TextBlock Text="12" Foreground="#717EB2" Margin="41 0 0 0"/>
+                            </StackPanel>
+                            
+                            <!--Chart-->
+                            <lvc:CartesianChart Grid.Row="1" Margin="45 0 0 25">
+                                <lvc:CartesianChart.Background>
+                                    <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                        <GradientStop Color="#26376F" Offset="0"/>
+                                        <GradientStop Color="#6A6AE4" Offset="1.5"/>
+                                    </LinearGradientBrush>
+                                </lvc:CartesianChart.Background>
+
+                                <lvc:CartesianChart.DataTooltip>
+                                    <lvc:DefaultTooltip Background="#24336A" Foreground="#D5E2FF"/>
+                                </lvc:CartesianChart.DataTooltip>
+
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis MinValue="1" MaxValue="5" Foreground="#717EB2" ShowLabels="False">
+                                        <lvc:Axis.Separator>
+                                            <lvc:Separator StrokeThickness="0"/>
+                                        </lvc:Axis.Separator>
+                                    </lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis MinValue="0" MaxValue="60000" Foreground="#717EB2" ShowLabels="False">
+                                        <lvc:Axis.Separator>
+                                            <lvc:Separator StrokeThickness="0"/>
+                                        </lvc:Axis.Separator>
+                                    </lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+
+                                <lvc:CartesianChart.Series>
+                                    <lvc:LineSeries Stroke="#ADA4FD" StrokeThickness="2" PointGeometrySize="0" Values="20000, 17000, 30000, 15000, 50000, 30000, 20000">
+                                        <lvc:LineSeries.Fill>
+                                            <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5, 1">
+                                                <GradientStop Color="#B397E2" Offset="0.4"/>
+                                                <GradientStop Color="#6A6AE4" Offset="1.2"/>
+                                            </LinearGradientBrush>
+                                        </lvc:LineSeries.Fill>
+                                    </lvc:LineSeries>
+                                </lvc:CartesianChart.Series>
+                            </lvc:CartesianChart>
+                        </Grid>
                     </Border>
 
                     <!--Orders Section-->
@@ -178,7 +256,11 @@
 
                             <!--Orders-->
                             <StackPanel Grid.Row="1">
-                                
+                                <uc:Order Title="T-Shirt Embrace" Desc="John Doe - 10:30" Icon="Tshirt"/>
+                                <uc:Order Title="Shoes Kamoin" Desc="Karim Penci - 12:00" Icon="ShoePrints"/>
+                                <uc:Order Title="Socks Besaze" Desc="Mari Sumue - 13:45" Icon="Socks"/>
+                                <uc:Order Title="T-Shirt Argok" Desc="Ali Qackman - 14:30" Icon="Tshirt"/>
+                                <uc:Order Title="Hat Jackman" Desc="Jack Praide - 15:25" Icon="HardHat"/>
                             </StackPanel>
                         </Grid>
                     </Border>
